@@ -53,6 +53,19 @@ function initLights() {
     spotLight.shadowMapHeight = 1024;
     scene.add( spotLight );
     //scene.add( new THREE.CameraHelper( spotLight.shadow.camera ) );
+
+    scene.add( new THREE.AmbientLight( 0x404040 ) );
+    secondSpotLight = new THREE.SpotLight( 0xffffff );
+    secondSpotLight.name = 'Second Spot Light';
+    secondSpotLight.angle = Math.PI / 5;
+    secondSpotLight.penumbra = 0.9;
+    secondSpotLight.position.set( 1, 1, 1 );
+    secondSpotLight.castShadow = true;
+    secondSpotLight.shadowCameraNear = 8;
+    secondSpotLight.shadowCameraFar = 10;
+    secondSpotLight.shadowMapWidth = 1024;
+    secondSpotLight.shadowMapHeight = 1024;
+    scene.add( secondSpotLight );
 }
 
 var mesh = null;

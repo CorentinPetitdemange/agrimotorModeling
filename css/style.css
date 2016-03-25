@@ -1,5 +1,5 @@
 body {
-  background: #fff;
+  background: #404040;
   overflow: hidden;
 }
 
@@ -35,6 +35,63 @@ body {
   position: absolute;
   top: 440px;
   left: 50px;
+}
+
+p {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.8em;
+  color: #a1a12f;
+  text-align: center;
+  border: 1px solid red;
+  padding: 0px 40px;
+  background-color: #000;
+}
+
+#image_original {
+  width: 250px;
+  position: absolute;
+  top: 105px;
+  right: 50px;
+  border: 1px solid #a1a12f;
+}
+
+#original {
+  color: red;
+  position: absolute;
+  top: 267px;
+  right: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.2em;
+  color: #a1a12f;
+  text-align: center;
+  padding: 0px 15px;
+  background-color: #000;
+  z-index: 100;
+}
+
+#image_blender {
+  width: 250px;
+  position: absolute;
+  top: 320px;
+  right: 50px;
+  border: 1px solid #a1a12f;
+}
+
+#blender {
+  color: red;
+  position: absolute;
+  top: 460px;
+  right: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.2em;
+  color: #a1a12f;
+  text-align: center;
+  padding: 0px 15px;
+  background-color: #000;
+  z-index: 100;
 }
 
 .btn {
