@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tractor model</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="rotation">
+        <h2 class="header">Rotation</h2>
+        <button class="btn" onclick="rotateLeft()">Y Left</button>
+        <button class="btn" onclick="rotateRight()">Y Right</button>
+        <br>
+        <button class="btn" onclick="rotate_X_Top()">X Top</button>
+        <button class="btn" onclick="rotate_X_Bottom()">X Bottom</button>
+        <br>
+        <button class="btn" onclick="rotate_Z_Left()">Z Left</button>
+        <button class="btn" onclick="rotate_Z_Right()">Z Right</button>
+        <br>
+    </div>
+
+    <div class="scale">
+        <h2 class="header">Scale</h2>
+        <button class="btn" onclick="scale_x()">X</button>
+        <button class="btn" onclick="scale_y()">Y</button>
+        <button class="btn" onclick="scale_z()">Z</button>
+        <br>
+        <button class="btn" onclick="scale_origin()">Original</button>
+        <br>
+    </div>
+
+    <div class="wireframe">
+        <h2 class="header">Wireframe&nbsp&nbsp&nbsp&nbsp</h2>
+        <button class="btn" onclick="wireframe()">On</button>
+        <button class="btn" onclick="abort()">Off</button>
+    </div>
+
+    <div class="light">
+        <h2 class="header">Light</h2>
+        <button class="btn" onclick="extraLight()">Extra Light</button>
+        <button class="btn" onclick="removeLight()">Default Light</button>
+    </div>
+
+    <div class="zoom">
+        <h2 class="header">Zoom</h2>
+        <button class="btn" onclick="plus()">+</button>
+        <button class="btn" onclick="minus()">-</button>
+    </div>
+
+    <div id="container">
+    </div>
+    <script src="js/three.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body {
+  background: #fff;
+  overflow: hidden;
+}
+
+#container {
+  position: relative;
+}
+
+.rotation {
+  position: absolute;
+  top: 15px;
+  left: 50px;
+}
+
+.scale {
+  position: absolute;
+  top: 165px;
+  left: 50px;
+}
+
+.wireframe {
+  position: absolute;
+  top: 280px;
+  left: 50px;
+}
+
+.light {
+  position: absolute;
+  top: 360px;
+  left: 50px;
+}
+
+.zoom {
+  position: absolute;
+  top: 440px;
+  left: 50px;
+}
+
+.btn {
+  font-family: Arial;
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: bold;
+  background: #000000;
+  padding: 5px 10px 5px 10px;
+  border: solid #ff0000 1px;
+  text-decoration: none;
+  margin-right: 0px;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  color: #a1a12f;
+  border-color: #a1a12f;
+}
+
+.header {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.2em;
+  color: red;
+  border-bottom: 1px solid red;
+}
