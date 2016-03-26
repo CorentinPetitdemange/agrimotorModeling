@@ -72,7 +72,7 @@ var mesh = null;
 function initMesh() {
     var loader = new THREE.JSONLoader();
 
-    loader.load('../model.json', function(geometry, materials) {
+    loader.load('https://raw.githubusercontent.com/Luchnik/agrimotorModeling/master/model.json', function(geometry, materials) {
         mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
         mesh.scale.x = mesh.scale.y = mesh.scale.z = SCALE_ORIGINAL;
         mesh.translation = THREE.GeometryUtils.center(geometry);
