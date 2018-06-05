@@ -15,12 +15,10 @@ var ZOOM_RATIO = 1;
 
 function init() {
     scene = new THREE.Scene();
-
     initMesh();
     initCamera();
     initLights();
     initRenderer();
-
     document.body.appendChild(renderer.domElement);
 }
 
@@ -40,32 +38,8 @@ function initRenderer() {
 }
 
 function initLights() {
-    scene.add( new THREE.AmbientLight( 0x404040 ) );
-    spotLight = new THREE.SpotLight( 0xffffff );
-    spotLight.name = 'Spot Light';
-    spotLight.angle = Math.PI / 5;
-    spotLight.penumbra = 0.3;
-    spotLight.position.set( 10, 10, -6 );
-    spotLight.castShadow = true;
-    spotLight.shadowCameraNear = 8;
-    spotLight.shadowCameraFar = 10;
-    spotLight.shadowMapWidth = 1024;
-    spotLight.shadowMapHeight = 1024;
-    scene.add( spotLight );
-    //scene.add( new THREE.CameraHelper( spotLight.shadow.camera ) );
-
-    scene.add( new THREE.AmbientLight( 0x404040 ) );
-    secondSpotLight = new THREE.SpotLight( 0xffffff );
-    secondSpotLight.name = 'Second Spot Light';
-    secondSpotLight.angle = Math.PI / 5;
-    secondSpotLight.penumbra = 0.9;
-    secondSpotLight.position.set( 1, 1, 1 );
-    secondSpotLight.castShadow = true;
-    secondSpotLight.shadowCameraNear = 8;
-    secondSpotLight.shadowCameraFar = 10;
-    secondSpotLight.shadowMapWidth = 1024;
-    secondSpotLight.shadowMapHeight = 1024;
-    scene.add( secondSpotLight );
+    lightConstructor('Spot Light', 0.3, { x: 10, y: 10, z: -6 });
+    lightConstructor('Second Spot Light', 0.9, { x: 1, y: 1, z: 1 });
 }
 
 var mesh = null;
@@ -80,107 +54,60 @@ function initMesh() {
     });
 }
 
-/* ---------- ROTATING ---------- */
-function rotateLeft() {
+function rotate(axis, direction) {
     if (!mesh)
         return;
-    mesh.rotation.y -= SPEED * SPEED_FREQUENSY;
+
+    var ratio = SPEED * SPEED_FREQUENSY;
+
+    if (direction) {
+        mesh.rotation[axis] += ratio;
+    } else {
+        mesh.rotation[axis] -= ratio;
+    }
 }
 
-function rotateRight() {
-    if (!mesh)
-        return;
-    mesh.rotation.y += SPEED * SPEED_FREQUENSY;
-}
-
-function rotate_X_Top() {
-    if (!mesh)
-        return;
-    mesh.rotation.x -= SPEED * SPEED_FREQUENSY;
-}
-
-function rotate_X_Bottom() {
-    if (!mesh)
-        return;
-    mesh.rotation.x += SPEED * SPEED_FREQUENSY;
-}
-
-function rotate_Z_Left() {
-    if (!mesh)
-        return;
-    mesh.rotation.z -= SPEED * SPEED_FREQUENSY;
-}
-
-function rotate_Z_Right() {
-    if (!mesh)
-        return;
-    mesh.rotation.z += SPEED * SPEED_FREQUENSY;
-}
-/* ---------- END ROTATING ---------- */
-
-/* ---------- SCALE ---------- */
 function scale_origin() {
     mesh.scale.set( SCALE_ORIGINAL, SCALE_ORIGINAL, SCALE_ORIGINAL );
 }
 
-function scale_x() {
-    mesh.scale.x += SCALE_SIZE;
+function scale(axis) {
+    mesh.scale[axis] += SCALE_SIZE;
 }
 
-function scale_y() {
-    mesh.scale.y += SCALE_SIZE;
-}
-
-function scale_z() {
-    mesh.scale.z += SCALE_SIZE;
-}
-/* ---------- END SCALE ---------- */
-
-/* ---------- WIREFRAME ---------- */
 function wireframe() {
     var egh = new THREE.EdgesHelper( mesh, 0x00ffff );
     egh.material.linewidth = 2;
     scene.add(egh);
 }
 
-function abort() {
-    location.reload();
-}
-/* ---------- END WIREFRAME ---------- */
-
-/* ---------- ZOOM ---------- */
-function plus() {
-    FIELD_OF_VIEW = FIELD_OF_VIEW - ZOOM_RATIO;
+function zoom(direction) {
+    direction ? FIELD_OF_VIEW -= ZOOM_RATIO : FIELD_OF_VIEW += ZOOM_RATIO;
     camera = new THREE.PerspectiveCamera(FIELD_OF_VIEW, WIDTH / HEIGHT, 1, 10);
     camera.position.set(5, 3.5, -6);
     camera.lookAt(scene.position);
 }
-
-function minus() {
-    FIELD_OF_VIEW = FIELD_OF_VIEW + ZOOM_RATIO;
-    camera = new THREE.PerspectiveCamera(FIELD_OF_VIEW, WIDTH / HEIGHT, 1, 10);
-    camera.position.set(5, 3.5, -6);
-    camera.lookAt(scene.position);
-}
-/* ---------- END ZOOM ---------- */
 
 function extraLight() {
-    scene.add( new THREE.AmbientLight( 0x404040 ) );
-    secondSpotLight = new THREE.SpotLight( 0xffffff );
-    secondSpotLight.name = 'Second Spot Light';
-    secondSpotLight.angle = Math.PI / 5;
-    secondSpotLight.penumbra = 0.9;
-    secondSpotLight.position.set( 1, 1, 1 );
-    secondSpotLight.castShadow = true;
-    secondSpotLight.shadowCameraNear = 8;
-    secondSpotLight.shadowCameraFar = 10;
-    secondSpotLight.shadowMapWidth = 1024;
-    secondSpotLight.shadowMapHeight = 1024;
-    scene.add( secondSpotLight );
-    //scene.add( new THREE.CameraHelper( secondSpotLight.shadow.camera ) );
+    lightConstructor('Second Spot Light', 0.9, { x: 1, y: 1, z: 1});
 }
 
-function removeLight() {
+function lightConstructor(name, penumbra, position) {
+    scene.add( new THREE.AmbientLight( 0x404040 ) );
+    spotLight = new THREE.SpotLight( 0xffffff );
+    spotLight.name = name;
+    spotLight.angle = Math.PI / 5;
+    spotLight.penumbra = penumbra;
+    spotLight.position.set( position.x, position.y, position.z );
+    spotLight.castShadow = true;
+    spotLight.shadowCameraNear = 8;
+    spotLight.shadowCameraFar = 10;
+    spotLight.shadowMapWidth = 1024;
+    spotLight.shadowMapHeight = 1024;
+    scene.add( spotLight );
+}
+
+function reload() {
     location.reload();
 }
 

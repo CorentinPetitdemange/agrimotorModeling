@@ -7,50 +7,50 @@
 <body>
 
     <p>"Case IH 500 quadtrac" model</p>
-    <img id="image_original" src="img/original.JPG" alt="Original traktor" title="Original traktor">
+    <img id="image_original" src="img/original.jpg" alt="Original traktor" title="Original traktor">
     <small id="original">Original Traktor</small>
-    <img id="image_blender" src="img/blender.JPG" alt="Blender model" title="Blender model">
+    <img id="image_blender" src="img/blender.jpg" alt="Blender model" title="Blender model">
     <small id="blender">Blender Model</small>
 
     <div class="rotation">
         <h2 class="header">Rotation</h2>
-        <button class="btn" onclick="rotateLeft()">Y Left</button>
-        <button class="btn" onclick="rotateRight()">Y Right</button>
+        <button class="btn" onclick="rotate('y', false)">Y Left</button>
+        <button class="btn" onclick="rotate('y', true)">Y Right</button>
         <br>
-        <button class="btn" onclick="rotate_X_Top()">X Top</button>
-        <button class="btn" onclick="rotate_X_Bottom()">X Bottom</button>
+        <button class="btn" onclick="rotate('x', false)">X Top</button>
+        <button class="btn" onclick="rotate('x', true)">X Bottom</button>
         <br>
-        <button class="btn" onclick="rotate_Z_Left()">Z Left</button>
-        <button class="btn" onclick="rotate_Z_Right()">Z Right</button>
+        <button class="btn" onclick="rotate('z', false)">Z Left</button>
+        <button class="btn" onclick="rotate('z', true)">Z Right</button>
         <br>
     </div>
 
     <div class="scale">
         <h2 class="header">Scale</h2>
-        <button class="btn" onclick="scale_x()">X</button>
-        <button class="btn" onclick="scale_y()">Y</button>
-        <button class="btn" onclick="scale_z()">Z</button>
+        <button class="btn" onclick="scale('x')">X</button>
+        <button class="btn" onclick="scale('y')">Y</button>
+        <button class="btn" onclick="scale('z')">Z</button>
         <br>
         <button class="btn" onclick="scale_origin()">Original</button>
         <br>
     </div>
 
     <div class="wireframe">
-        <h2 class="header">Wireframe&nbsp&nbsp&nbsp&nbsp</h2>
+        <h2 class="header">Wireframe</h2>
         <button class="btn" onclick="wireframe()">On</button>
-        <button class="btn" onclick="abort()">Off</button>
+        <button class="btn" onclick="reload()">Off</button>
     </div>
 
     <div class="light">
         <h2 class="header">Light</h2>
         <button class="btn" onclick="extraLight()">Extra Light</button>
-        <button class="btn" onclick="removeLight()">Default Light</button>
+        <button class="btn" onclick="reload()">Default Light</button>
     </div>
 
     <div class="zoom">
         <h2 class="header">Zoom</h2>
-        <button class="btn" onclick="plus()">+</button>
-        <button class="btn" onclick="minus()">-</button>
+        <button class="btn" onclick="zoom(true)">+</button>
+        <button class="btn" onclick="zoom(false)">-</button>
     </div>
 
     <div id="container"> 
